@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flow Automate | Automação de Processos com IA</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<defs>
+<linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'>
+<stop offset='0%' stop-color='%236366f1'/>
+<stop offset='100%' stop-color='%2306b6d4'/>
+</linearGradient>
+</defs>
+<circle cx='50' cy='50' r='40' stroke='url(%23g)' stroke-width='10' fill='none'/>
+<polygon points='45,30 70,50 45,70' fill='url(%23g)'/>
+</svg>">
+    <link rel="dns-prefetch" href="//images.unsplash.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', Helvetica, sans-serif;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, .35), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, .35), transparent 40%),
+                #020617;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, #6366f155, transparent 70%);
+            top: -300px;
+            left: -200px;
+            filter: blur(120px);
+        }
+
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .gradient {
+            /*background: linear-gradient(135deg, #1f2, #06b6d4);*/
+            background-color: #1f2937;
+        }
+
+        .logo-spin {
+            animation: spinLogo 10s linear infinite;
+        }
+
+        @keyframes spinLogo {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: .4s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .arrow-down {
+            font-size: 35px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(12px)
+            }
+        }
+
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #topBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            color: black;
+            padding: 12px 15px;
+            border-radius: 0%;
+            display: none;
+            cursor: pointer;
+        }
+
+        #topBtn:hover {
+            background: #e0e0e0;
+        }
+
+        .video-demo video {
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, .2);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #ffffff;
+            font-family: 'Inter', Helvetica, sans-serif;
+        }
+
+        .section-title-reverse {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #0f172a;
+            font-family: 'Inter', Helvetica, sans-serif;
+        }
+
+        /* BOTÃO */
+
+        .btn-animated {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            z-index: 1;
+            border: 1px solid #6366f1;
+            border-radius: 0px;
+        }
+
+        .btn-animated::before {
+            content: "";
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+            transition: left .45s ease;
+            z-index: -1;
+            border-radius: 0px;
+        }
+
+        .btn-animated:hover::before {
+            left: 0;
+        }
+
+        .btn-animated:hover {
+            color: white;
+        }
+
+        /* SUBNAV */
+
+        .subnav-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: -35px;
+            margin-bottom: 40px;
+        }
+
+        .subnav {
+            position: relative;
+            display: flex;
+            gap: 10px;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 40px;
+        }
+
+        .subnav a {
+            position: relative;
+            padding: 10px 22px;
+            border-radius: 30px;
+            z-index: 2;
+            transition: color .3s;
+        }
+
+        .subnav a:hover {
+            color: white;
+        }
+
+        .subnav-hover {
+            position: absolute;
+            height: 100%;
+            width: 120px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            left: 0;
+            top: 0;
+            transition: all .35s ease;
+        }
+
+        /* CARROSSEL */
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform .5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-direction: column;
+        }
+
+        @media(min-width:768px) {
+            .slide {
+                flex-direction: row;
+            }
+        }
+
+        .slide img {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(99, 102, 241, .8);
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 10px;
+        }
+
+        .carousel-btn:hover {
+            background: #06b6d4;
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .carousel img {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+            width: 100%;
+            height: auto;
+        }
+
+        nav {
+            z-index: 20;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #6366f166, transparent 70%);
+            filter: blur(120px);
+            animation: glowMove 12s infinite alternate;
+        }
+
+        @keyframes glowMove {
+            0% {
+                transform: translate(-20%, -10%)
+            }
+
+            100% {
+                transform: translate(20%, 10%)
+            }
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #25D366;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 0px;
+            font-weight: bold;
+            z-index: 999;
+            display: none;
+        }
+
+        @media(max-width:768px) {
+            .whatsapp-float {
+                display: block;
+            }
+        }
+
+        section {
+            scroll-margin-top: 120px;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    #6366f1,
+                    #06b6d4,
+                    #0ea5e9,
+                    #6366f1);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+            opacity: .15;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        .headline {
+            font-family: 'Manrope', sans-serif;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: headlineReveal 1s ease forwards;
+            letter-spacing: 1.5px;
+        }
+
+        .headline-accent {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            letter-spacing: 1.5px;
+        }
+
+        @keyframes headlineReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-animated {
+            transition: transform .2s;
+        }
+
+        .btn-animated:hover {
+            transform: translateY(-2px);
+        }
+
+        textarea,
+        input {
+            border-radius: 0;
+        }
+
+        .quem-somos {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            border-radius: 10px;
+        }
+
+        .modal-content {
+            background: white;
+            color: #0f172a;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, .1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            animation: modalEnter .3s ease;
+            border-radius: 10px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .modal-header button {
+            background: none;
+            border: none;
+            color: #0f172a;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        @keyframes modalEnter {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .ai-thinking {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .ai-thinking span {
+            width: 10px;
+            height: 10px;
+            background: #06b6d4;
+            border-radius: 50%;
+            animation: thinking 1.2s infinite ease-in-out;
+        }
+
+        .ai-thinking span:nth-child(2) {
+            animation-delay: .2s
+        }
+
+        .ai-thinking span:nth-child(3) {
+            animation-delay: .4s
+        }
+
+        @keyframes thinking {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0)
+            }
+
+            40% {
+                transform: scale(1)
+            }
+        }
+
+        .ai-progress {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .ai-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6366f1, #06b6d4);
+            animation: aiProgress 2s linear forwards;
+        }
+
+        @keyframes aiProgress {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 10px 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5b;
+        }
+
+        .btn-linkedin {
+            background: #0A66C2;
+            color: white;
+            padding: 10px 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn-linkedin:hover {
+            background: #084c94;
+        }
+
+        .video-thumb {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .video-thumb video {
+            display: block;
+            width: 100%;
+            filter: brightness(.8);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: white;
+            background: rgba(0, 0, 0, .6);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: .3s;
+        }
+
+        .video-thumb:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-caption {
+            margin-bottom: 10px;
+            color: #d1d5db;
+            text-align: center;
+        }
+
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .video-modal-content {
+            position: relative;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .video-modal video {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.4-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.3-.1-.5.1-.1.2-.6.8-.7.9-.1.1-.2.2-.4.1-.2-.1-.9-.3-1.7-1.1-.6-.5-1.1-1.2-1.2-1.4-.1-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.1-.2.2-.3.1-.1 0-.2 0-.3s-.5-1.3-.7-1.8c-.2-.4-.3-.4-.5-.4h-.4c-.1 0-.3.1-.4.2-.1.1-.6.6-.6 1.5s.6 1.7.7 1.8c.1.1 1.2 1.9 2.9 2.6.4.2.8.3 1.1.4.5.2.9.2 1.2.1.4-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z" />
+        </symbol>
+
+        <symbol id="icon-linkedin" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M20.4 20.4h-3.6v-5.5c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9v5.6H9V9h3.5v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.3 2.4 4.3 5.4v6.3zM5.3 7.4c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8C24 .8 23.2 0 22.2 0z" />
+        </symbol>
+
+    </svg>
+
+    <nav class="absolute top-0 left-0 w-full z-20 flex items-center p-6 max-w-6xl mx-auto">
+
+        <div class="flex items-center gap-3">
+
+            <svg class="logo-spin" width="34" height="34" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="#6366f1" stroke-width="8" fill="none" />
+                <polygon points="45,30 70,50 45,70" fill="#06b6d4" />
+            </svg>
+
+            <span class="text-2xl font-bold tracking-wide">
+                FlowAutomate
+            </span>
+
+        </div>
+
+    </nav>
+
+    <section class="hero text-center py-28 md:py-36 px-6">
+
+        <canvas id="particles"></canvas>
+
+        <div class="hero-gradient"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+
+            <h1 class="headline text-3xl md:text-5xl font-bold mb-6">
+                Automatize tarefas da sua empresa com
+                <span class="headline-accent">RPA + IA</span>
+            </h1>
+
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+                Reduza custos operacionais, elimine tarefas repetitivas e transforme dados em decisões estratégicas por
+                meio
+                de automação inteligente.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+
+                <a href="#servicos" class="btn-animated px-8 py-4 font-semibold">
+                    Conhecer serviços
+                </a>
+
+                <a href="#simulador" class="btn-animated px-8 py-4 font-semibold">
+                    Simular automação
+                </a>
+
+            </div>
+
+            <div class="mt-16 arrow-down" onclick="scrollNext()">↓</div>
+
+        </div>
+
+    </section>
+
+    <div class="subnav-wrapper">
+
+        <div class="subnav">
+
+            <a href="#servicos">Soluções</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#automacao">Automação</a>
+            <a href="#simulador">Simular</a>
+            <div class="subnav-hover"></div>
+
+        </div>
+
+    </div>
+
+    <section id="servicos" class="px-6 max-w-6xl mx-auto fade-section">
+
+        <h2 class="section-title">
+            Nossas Soluções
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="card text-center">
+
+                <div style="text-align: center;">
+                    <img src="robo.png" width="50" style="display:block; margin:auto;">
+                </div>
+
+                <h3 class="text-xl mb-3 mt-4">Automação de Processos (RPA)</h3>
+
+                <p style="text-align: justify;">
+                    Desenvolvemos robôs capazes de executar tarefas repetitivas em sistemas, sites,
+                    planilhas entre outras plataformas, reduzindo o tempo da sua equipe gasto em atividades
+                    operacionais.
+                </p>
+
+            </div>
+
+            <div class="card text-center">
+
+                <div style="text-align: center;">
+                    <img src="ia.png" width="50" style="display:block; margin:auto;">
+                </div>
+
+                <h3 class="text-xl mb-3 mt-4">Agentes de Inteligência Artificial</h3>
+
+                <p style="text-align: justify;">
+                    Implementamos agentes inteligentes que analisam informações, executam ações automáticas
+                    e auxiliam equipes em tarefas operacionais e tomadas de decisão em todos os níveis da organização.
+                </p>
+
+            </div>
+
+            <div class="card text-center">
+
+                <div style="text-align: center;">
+                    <img src="dash.png" width="50" style="display:block; margin:auto;">
+                </div>
+
+                <h3 class="text-xl mb-3 mt-4">Dashboards e Análise de Dados</h3>
+
+                <p style="text-align: justify;">
+                    Transformamos dados e informações perdidos na sua empresa, em dashboards interativos e indicadores
+                    estratégicos para gestão e tomada de decisão, otimizando crescimento e alavancando resultados.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="automacao" class="py-24 px-8 bg-gray-900 fade-section">
+
+        <h2 class="section-title">
+            Automações reais em execução
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto video-demo">
+
+            <div class="video-card">
+
+                <p class="video-caption">
+                    RPA processando Notas Fiscais automaticamente:<br>
+                </p>
+
+                <div class="video-thumb" onclick="openVideo('rpa_nf.mp4')">
+
+                    <video muted playsinline width="100%">
+                        <source src="rpa_nf.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="play-icon">▶</div>
+
+                </div>
+
+                <p class="video-caption"><br>
+                    Extração de dados, preenchimento de planilhas, geração de relatórios automáticos e envio de
+                    mensagens instantâneas.
+                </p>
+
+            </div>
+
+
+            <div class="video-card">
+
+                <p class="video-caption">
+                    Robô enviando emails com dados processados:
+                </p>
+
+                <div class="video-thumb" onclick="openVideo('rpa_email.mp4')">
+
+                    <video muted playsinline width="100%">
+                        <source src="rpa_email.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="play-icon">▶</div>
+
+                </div>
+
+                <p class="video-caption"><br>
+                    Leitura de documentos pdf, processamento de dados, geração de emails personalizados e envio
+                    automático.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="sobre" class="py-28 px-8 max-w-5xl mx-auto text-center fade-section">
+
+        <h2 class="section-title">
+            Quem somos
+        </h2>
+
+        <p class="text-gray-300 text-lg quem-somos">
+
+            Somos uma equipe de tecnologia localizada em Muriaé, Minas Gerais, com sólida experiência no desenvolvimento
+            de soluções de automação de processos, inteligência artificial e análise de dados para empresas.
+
+        </p>
+
+        <br>
+
+        <p class="text-gray-300 text-lg quem-somos">
+
+            Nossa missão é identificar tarefas repetitivas e processos operacionais que podem ser automatizados,
+            desenvolvendo robôs de software, agentes inteligentes e dashboards estratégicos que aumentam a produtividade
+            e reduzem custos.
+
+        </p>
+
+        <br>
+
+        <p class="text-gray-300 text-lg quem-somos">
+
+            Utilizamos algumas das ferramentas e linguagens de programação mais modernas e consolidadas do mercado,
+            como Python, JavaScript e frameworks voltados para automação e integração de sistemas.
+            Também aplicamos tecnologias de RPA (Robotic Process Automation), APIs, integração de dados e plataformas de
+            business intelligence,
+            permitindo criar soluções robustas, escaláveis e seguras, adaptadas à realidade de cada empresa.
+            Nosso foco é utilizar a tecnologia certa para transformar tarefas manuais em processos automatizados e
+            inteligentes.
+
+        </p>
+
+    </section>
+
+    <section class="py-24 px-8 bg-white text-gray-800 fade-section">
+
+        <h2 class="section-title-reverse">
+            Segmentos com alto potencial de automação
+        </h2>
+
+        <div class="carousel max-w-6xl mx-auto">
+
+            <div class="carousel-track" id="carouselTrack">
+
+                <div class="slide">
+
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" loading="lazy" width="400">
+
+                    <div>
+                        <h3 class="text-2xl mb-4">Escritórios Contábeis</h3>
+                        <p>
+                            Automação de importação de notas fiscais, geração de relatórios, criação<br>
+                            e edição de documentos, conciliações e integrações entre diferentes<br> sistemas contábeis.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="slide">
+
+                    <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" loading="lazy" width="400">
+
+                    <div>
+                        <h3 class="text-2xl mb-4">Comércio e Varejo</h3>
+                        <p>
+                            Robôs que geram relatórios de vendas automaticamente, controle de estoque,<br>
+                            contato ao cliente e integram plataformas de e-commerce com ERPs.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="slide">
+
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" loading="lazy" width="400">
+
+                    <div>
+                        <h3 class="text-2xl mb-4">Indústria</h3>
+                        <p>
+                            Automação de controle de produção, atualização de planilhas de pedidos,
+                            integração de sistemas e geração automática de indicadores operacionais.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="slide">
+
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef" loading="lazy" width="400">
+
+                    <div>
+                        <h3 class="text-2xl mb-4">Clínicas e Consultórios</h3>
+                        <p>
+                            Automação de confirmação de consultas, organização de agendas, envio<br>
+                            automático de mensagens e geração de relatórios administrativos.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="slide">
+
+                    <img src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d" loading="lazy" width="400">
+
+                    <div>
+                        <h3 class="text-2xl mb-4">Instituições Financeiras</h3>
+                        <p>
+                            Automação de análise de dados, geração de indicadores, insights para<br>
+                            tomadas de decisões e execução de tarefas operacionais repetitivas.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="slide">
+
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa" loading="lazy" width="400">
+
+                    <div>
+                        <h3 class="text-2xl mb-4">Imobiliárias</h3>
+                        <p>
+                            Automação de envio de propostas, atualização de anúncios em portais,
+                            organização de leads de clientes e geração automática de relatórios e documentos.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+            <button class="carousel-btn next" onclick="nextSlide()">›</button>
+
+        </div>
+
+    </section>
+
+    <section class="py-28 px-6 bg-gray-900 text-center fade-section">
+
+        <h2 class="section-title">
+            Existe um processo repetitivo na sua empresa?
+        </h2>
+
+        <p class="text-gray-300 max-w-2xl mx-auto mb-10">
+            Descreva uma tarefa manual que sua equipe realiza e descubra
+            se ela pode ser automatizada.
+        </p>
+
+        <div class="max-w-2xl mx-auto">
+
+            <textarea id="automationInput" class="w-full p-4 text-black" rows="4"
+                placeholder="Exemplo: copiar dados de um sistema para uma planilha todos os dias..."></textarea>
+
+            <button onclick="analisarAutomacao()" class="btn-animated mt-6 px-8 py-3">
+                Analisar possibilidade de automação
+            </button>
+
+            <p id="automationResult" class="mt-6 text-indigo-400"></p>
+
+        </div>
+
+    </section>
+
+    <section id="simulador" class="py-24 px-6 bg-gray-800 text-center fade-section">
+
+        <h2 class="section-title">
+            Quanto sua empresa pode economizar com automação?
+        </h2>
+
+        <p class="text-gray-300 mb-10">
+            Simule quanto tempo e dinheiro podem ser economizados automatizando processos repetitivos.
+        </p>
+
+        <div class="max-w-xl mx-auto space-y-6">
+
+            <input id="horas" type="number" placeholder="Horas gastas por semana com processo repetitivo"
+                class="w-full p-4 text-black">
+
+            <input id="custo" type="number" placeholder="Custo médio por hora (R$) do colaborador"
+                class="w-full p-4 text-black">
+
+            <button onclick="calcularEconomia()" class="btn-animated px-8 py-3">
+                Calcular economia
+            </button>
+
+            <div id="resultadoEconomia" class="text-indigo-400 text-xl mt-6"></div>
+
+        </div>
+
+    </section>
+
+    <section class="py-16 text-center bg-gray-900 text-white">
+
+        <div class="max-w-3xl mx-auto">
+
+            <h3 style="font-size:28px;margin-bottom:10px">
+                Empresas economizam em média
+            </h3>
+
+            <div style="font-size:42px;font-weight:bold;color:#22c55e">
+                120 horas por mês
+            </div>
+
+            <p class="text-gray-400">
+                automatizando tarefas repetitivas com robôs de software.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section id="contato" class="text-center py-32 gradient fade-section">
+
+        <h2 class="text-4xl font-bold mb-6">
+
+            Descubra o que pode ser automatizado na sua empresa
+
+        </h2>
+
+        <p class="mb-10 text-lg">
+
+            Solicite um diagnóstico gratuito.
+
+        </p>
+
+        <div style="margin-top:16px;display:flex;gap:10px;justify-content:center">
+
+            <a href="https://wa.me/5532984625542" target="_blank" class="btn-whatsapp btn-icon">
+
+                <svg>
+                    <use href="#icon-whatsapp"></use>
+                </svg>
+                WhatsApp
+
+            </a>
+
+            <a href="https://linkedin.com/in/pedro-corrêdo-a1412b254" target="_blank" class="btn-linkedin btn-icon">
+
+                <svg>
+                    <use href="#icon-linkedin"></use>
+                </svg>
+                LinkedIn
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <footer class="text-center py-8 text-gray-400">
+
+        © 2026 FlowAutomate - Automação Inteligente
+
+    </footer>
+
+    <div id="topBtn" onclick="scrollTopPage()">↑</div>
+
+    <script>
+
+        /* ===============================
+        SCROLL HERO
+        =============================== */
+        function scrollNext() {
+            const el = document.getElementById("servicos")
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" })
+            }
+        }
+
+
+        /* ===============================
+        SCROLL TOP
+        =============================== */
+        function scrollTopPage() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        }
+
+
+        /* ===============================
+        SUBNAV HOVER ANIMATION
+        =============================== */
+        const subnav = document.querySelector(".subnav")
+        const hover = document.querySelector(".subnav-hover")
+        const links = document.querySelectorAll(".subnav a")
+
+        links.forEach(link => {
+            link.addEventListener("mouseenter", () => {
+
+                const rect = link.getBoundingClientRect()
+                const parent = subnav.getBoundingClientRect()
+
+                hover.style.width = rect.width + "px"
+                hover.style.left = (rect.left - parent.left) + "px"
+
+            })
+        })
+
+        subnav.addEventListener("mouseleave", () => {
+            hover.style.width = "0px"
+        })
+
+
+        /* ===============================
+        CARROSSEL
+        =============================== */
+        let index = 0
+        const track = document.getElementById("carouselTrack")
+        const slides = document.querySelectorAll(".slide")
+
+        function updateCarousel() {
+
+            if (index >= slides.length) {
+                index = 0
+            }
+
+            if (index < 0) {
+                index = slides.length - 1
+            }
+
+            track.style.transform = "translateX(-" + (index * 100) + "%)"
+        }
+
+        function nextSlide() {
+
+            index++
+            updateCarousel()
+
+        }
+
+        function prevSlide() {
+
+            index--
+            updateCarousel()
+
+        }
+
+        /* autoplay */
+        setInterval(() => {
+
+            nextSlide()
+
+        }, 10000)
+
+        /* ===============================
+        FADE ON SCROLL
+        =============================== */
+        window.addEventListener("scroll", () => {
+
+            const btn = document.getElementById("topBtn")
+
+            if (document.documentElement.scrollTop > 300) {
+
+                btn.style.display = "block"
+
+            } else {
+
+                btn.style.display = "none"
+
+            }
+
+            const sections = document.querySelectorAll(".fade-section")
+
+            sections.forEach(sec => {
+
+                const top = sec.getBoundingClientRect().top
+
+                if (top < window.innerHeight - 100) {
+
+                    sec.classList.add("visible")
+
+                }
+
+            })
+
+        })
+
+        /* ===============================
+        PARTICLES HERO
+        =============================== */
+        const canvas = document.getElementById("particles")
+        const ctx = canvas.getContext("2d")
+
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        })
+
+        let particles = []
+
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            })
+        }
+
+        function draw() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+            particles.forEach(p => {
+
+                p.x += p.vx
+                p.y += p.vy
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+
+                ctx.beginPath()
+                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
+                ctx.fillStyle = "#06b6d4"
+                ctx.fill()
+
+            })
+
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+
+                    let dx = particles[a].x - particles[b].x
+                    let dy = particles[a].y - particles[b].y
+                    let dist = Math.sqrt(dx * dx + dy * dy)
+
+                    if (dist < 120) {
+
+                        ctx.strokeStyle = "rgba(6,182,212,0.15)"
+                        ctx.lineWidth = 1
+
+                        ctx.beginPath()
+                        ctx.moveTo(particles[a].x, particles[a].y)
+                        ctx.lineTo(particles[b].x, particles[b].y)
+                        ctx.stroke()
+
+                    }
+
+                }
+            }
+
+            requestAnimationFrame(draw)
+        }
+
+        draw()
+
+        let startX = 0
+        let endX = 0
+
+        const carousel = document.querySelector(".carousel")
+
+        carousel.addEventListener("touchstart", (e) => {
+            startX = e.changedTouches[0].screenX
+        })
+
+        carousel.addEventListener("touchend", (e) => {
+            endX = e.changedTouches[0].screenX
+            handleSwipe()
+        })
+
+        function handleSwipe() {
+
+            if (startX - endX > 50) {
+                nextSlide()
+            }
+
+            if (endX - startX > 50) {
+                prevSlide()
+            }
+
+        }
+
+        function analisarAutomacao() {
+
+            const texto = document.getElementById("automationInput").value.toLowerCase()
+
+            showModal(
+                "Analisando processo...",
+                `
+<div style="text-align:center">
+
+<div class="ai-thinking">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<p>IA analisando seu processo...</p>
+
+<div class="ai-progress">
+<div class="ai-progress-bar"></div>
+</div>
+
+</div>
+`
+            )
+
+            setTimeout(() => {
+
+                let resposta = ""
+
+                const respostasPlanilha = [
+                    "Processos que envolvem planilhas podem ser automatizados facilmente com robôs que leem, tratam e atualizam dados automaticamente.",
+                    "Quando há manipulação frequente de planilhas ou Excel, geralmente é possível automatizar a coleta, preenchimento e consolidação dessas informações.",
+                    "Robôs de software conseguem abrir planilhas, inserir dados, atualizar células e gerar novas abas sem intervenção humana.",
+                    "Esse tipo de tarefa com planilhas normalmente é um excelente candidato para automação com RPA.",
+                    "Se existe trabalho manual recorrente em planilhas, provavelmente há uma oportunidade clara de automação."
+                ]
+
+                const respostasDigitacao = [
+                    "Tarefas de copiar e colar informações entre sistemas estão entre os cenários mais clássicos de automação com RPA.",
+                    "Quando existe digitação repetitiva ou transferência manual de dados, robôs podem executar essa atividade automaticamente.",
+                    "Processos que exigem copiar informações entre sistemas costumam ter alto potencial de automação.",
+                    "A automação é muito eficiente para tarefas de digitação e transcrição de dados entre plataformas.",
+                    "Se há pessoas movendo dados manualmente entre telas ou sistemas, normalmente isso pode ser automatizado."
+                ]
+
+                const respostasRelatorios = [
+                    "Relatórios periódicos podem ser gerados automaticamente conectando sistemas e organizando os dados em dashboards.",
+                    "Robôs podem coletar dados de diferentes sistemas e gerar relatórios automaticamente em planilhas ou painéis.",
+                    "Processos de geração de relatórios são muito comuns em projetos de automação.",
+                    "Com automação, relatórios podem ser criados e enviados automaticamente em horários programados.",
+                    "É possível automatizar a coleta de dados e a geração completa de relatórios sem intervenção humana."
+                ]
+
+                const respostasGenericas = [
+                    "Esse processo parece ter potencial de automação. Uma análise mais detalhada pode identificar oportunidades.",
+                    "Muitas tarefas operacionais podem ser automatizadas com robôs de software. Vale avaliar esse processo com mais profundidade.",
+                    "Dependendo de como esse processo funciona hoje, pode existir uma boa oportunidade de automação.",
+                    "Processos repetitivos ou baseados em regras costumam ser bons candidatos para automação.",
+                    "Uma análise técnica pode identificar pontos desse processo que podem ser executados automaticamente."
+                ]
+
+                const respostasMensagens = [
+                    "Envio automático de mensagens é um dos cenários mais comuns de automação. Robôs podem disparar comunicações para clientes de forma programada.",
+                    "Campanhas de mensagens podem ser automatizadas para enviar notificações, promoções ou lembretes automaticamente.",
+                    "É possível automatizar o envio de mensagens para clientes, equipes ou fornecedores de forma totalmente automática.",
+                    "Robôs podem disparar mensagens em massa ou individuais com base em regras ou eventos do sistema.",
+                    "Automação pode enviar mensagens automaticamente por WhatsApp, email ou outros canais sempre que um evento acontecer."
+                ]
+
+                function respostaAleatoria(lista) {
+                    return lista[Math.floor(Math.random() * lista.length)]
+                }
+
+                if (
+                    texto.includes("planilha") ||
+                    texto.includes("excel") ||
+                    texto.includes("spreadsheet") ||
+                    texto.includes("dados") ||
+                    texto.includes("tabela") ||
+                    texto.includes("planilhas")
+                ) {
+                    resposta = respostaAleatoria(respostasPlanilha)
+                }
+
+                else if (
+                    texto.includes("copiar") ||
+                    texto.includes("colar") ||
+                    texto.includes("digitar") ||
+                    texto.includes("transcrever") ||
+                    texto.includes("preencher") ||
+                    texto.includes("lançar") ||
+                    texto.includes("lançamento")
+                ) {
+                    resposta = respostaAleatoria(respostasDigitacao)
+                }
+
+                else if (
+                    texto.includes("relatorio") ||
+                    texto.includes("relatório") ||
+                    texto.includes("indicador") ||
+                    texto.includes("dashboard") ||
+                    texto.includes("relatorios") ||
+                    texto.includes("relatórios")
+                ) {
+                    resposta = respostaAleatoria(respostasRelatorios)
+                }
+
+                else if (
+                    texto.includes("mensagem") ||
+                    texto.includes("mensagens") ||
+                    texto.includes("whatsapp") ||
+                    texto.includes("email") ||
+                    texto.includes("e-mail") ||
+                    texto.includes("enviar") ||
+                    texto.includes("disparo") ||
+                    texto.includes("disparar") ||
+                    texto.includes("campanha") ||
+                    texto.includes("notificacao") ||
+                    texto.includes("notificação") ||
+                    texto.includes("aviso") ||
+                    texto.includes("comunicado")
+                ) {
+                    resposta = respostaAleatoria(respostasMensagens)
+                }
+
+                else {
+                    resposta = respostaAleatoria(respostasGenericas)
+                }
+
+showModal(
+"Resultado da análise:",
+`
+<div style="max-width:520px;margin:auto;text-align:center">
+
+<div style="
+background:#f8fafc;
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+margin-bottom:25px;
+">
+
+<div style="font-size:28px;margin-bottom:12px">
+<img src="robo.png" width="50" style="display:block; margin:auto;">
+</div>
+
+<p style="
+font-size:18px;
+line-height:1.6;
+color:#1f2937;
+margin-bottom:10px;
+">
+${resposta}
+</p>
+</div>
+
+<a href="https://wa.me/5532984625542"
+target="_blank"
+class="btn-animated px-6 py-3"
+style="display:inline-flex;align-items:center;gap:8px;font-size:16px">
+
+<svg width="18" height="18" fill="currentColor">
+<use href="#icon-whatsapp"></use>
+</svg>
+
+Conversar sobre automatizar esse processo
+
+</a>
+
+</div>
+`
+)
+
+            }, 2000)
+
+        }
+
+        function calcularEconomia() {
+
+            const horas = document.getElementById("horas").value
+            const custo = document.getElementById("custo").value
+
+            if (!horas || !custo) {
+                return
+            }
+
+            showModal(
+                "Calculando economia...",
+                `
+<div style="text-align:center">
+
+<div class="ai-thinking">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<p>IA estimando economia potencial...</p>
+
+<div class="ai-progress">
+<div class="ai-progress-bar"></div>
+</div>
+
+</div>
+`
+            )
+
+            setTimeout(() => {
+
+                let economiaAnual = Math.round(horas * custo * 52)
+
+                showModal(
+                    "Economia estimada",
+                    `
+
+<div style="text-align:center">
+
+<div id="valorEconomia" style="font-size:34px;font-weight:bold;color:#16a34a">
+R$ 0
+</div>
+
+<p style="margin-bottom:20px">
+Economia anual estimada automatizando esse processo
+</p>
+
+<canvas id="graficoEconomia" width="400" height="120"></canvas>
+
+<br><br>
+
+<a href="https://wa.me/5532984625542"
+target="_blank"
+class="btn-animated px-6 py-3">
+Conversar sobre esse processo
+</a>
+
+</div>
+
+`
+                )
+
+                animarValor("valorEconomia", economiaAnual)
+
+                setTimeout(() => desenharGrafico(economiaAnual), 100)
+
+            }, 2000)
+
+        }
+
+        function showModal(title, content) {
+
+            document.getElementById("modalTitle").innerText = title
+            document.getElementById("modalBody").innerHTML = content
+
+            document.getElementById("resultModal").style.display = "flex"
+
+        }
+
+        function closeModal() {
+            document.getElementById("resultModal").style.display = "none"
+        }
+
+        function animarValor(id, valorFinal) {
+
+            let atual = 0
+            let incremento = valorFinal / 60
+
+            let intervalo = setInterval(() => {
+
+                atual += incremento
+
+                if (atual >= valorFinal) {
+                    atual = valorFinal
+                    clearInterval(intervalo)
+                }
+
+                document.getElementById(id).innerText =
+                    "R$ " + Math.round(atual).toLocaleString("pt-BR")
+
+            }, 20)
+
+        }
+
+        function desenharGrafico(valor) {
+
+            const canvas = document.getElementById("graficoEconomia")
+            const ctx = canvas.getContext("2d")
+
+            let meses = 12
+            let valorMensal = valor / 12
+
+            let largura = canvas.width / meses
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+            for (let i = 0; i < meses; i++) {
+
+                let altura = (valorMensal / valor) * canvas.height * 10
+
+                ctx.fillStyle = "#6366f1"
+                ctx.fillRect(i * largura, canvas.height - altura, largura - 4, altura)
+
+            }
+
+        }
+
+        function openVideo(src) {
+
+            const modal = document.getElementById("videoModal")
+            const player = document.getElementById("videoPlayer")
+            const source = document.getElementById("videoSource")
+
+            source.src = src
+            player.load()
+
+            modal.style.display = "flex"
+
+        }
+
+        function closeVideo() {
+
+            const modal = document.getElementById("videoModal")
+            const player = document.getElementById("videoPlayer")
+
+            player.pause()
+            modal.style.display = "none"
+
+        }
+
+        window.onclick = function (e) {
+
+            const modal = document.getElementById("videoModal")
+
+            if (e.target === modal) {
+                closeVideo()
+            }
+
+        }
+
+    </script>
+
+    <a href="https://wa.me/5532984625542" target="_blank" class="whatsapp-float">
+        WhatsApp
+    </a>
+
+    <div id="resultModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <span id="modalTitle"></span>
+                <button onclick="closeModal()">✕</button>
+            </div>
+
+            <div id="modalBody"></div>
+
+        </div>
+
+    </div>
+
+    <div id="videoModal" class="video-modal">
+
+        <div class="video-modal-content">
+
+            <button class="video-close" onclick="closeVideo()">✕</button>
+
+            <video id="videoPlayer" controls autoplay>
+                <source id="videoSource" src="">
+            </video>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
