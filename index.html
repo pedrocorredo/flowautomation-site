@@ -12,14 +12,17 @@
     <meta name="keywords"
         content="automação de processos, RPA, inteligência artificial empresas, automação tarefas repetitivas, robôs de software, automação empresarial">
 
-    <meta name="description" content="Automação de processos empresariais, RPA, integrações e soluções tecnológicas para aumentar a produtividade da sua empresa.">
+    <meta name="description"
+        content="Automação de processos empresariais, RPA, integrações e soluções tecnológicas para aumentar a produtividade da sua empresa.">
 
-    <meta name="keywords" content="automação de processos, RPA, automação empresarial, automação robótica, integração de sistemas">
+    <meta name="keywords"
+        content="automação de processos, RPA, automação empresarial, automação robótica, integração de sistemas">
 
     <meta name="author" content="Smart Automate">
 
     <meta property="og:title" content="Smart Automate - Automação de Processos">
-    <meta property="og:description" content="Soluções de automação, RPA e tecnologia para aumentar a produtividade da sua empresa.">
+    <meta property="og:description"
+        content="Soluções de automação, RPA e tecnologia para aumentar a produtividade da sua empresa.">
     <meta property="og:image" content="preview.png">
     <meta property="og:url" content="https://smartautomate.com.br">
     <meta property="og:type" content="website">
@@ -235,6 +238,7 @@
             backdrop-filter: blur(10px);
             padding: 10px;
             border-radius: 40px;
+            font-size: 15px;
         }
 
         .subnav::-webkit-scrollbar {
@@ -744,6 +748,14 @@
             }
 
         }
+
+        @media(max-width:768px) {
+
+            .video-thumb {
+                display: none;
+            }
+
+        }
     </style>
 
 </head>
@@ -794,10 +806,9 @@
                 <span class="headline-accent">RPA + IA</span>
             </h1>
 
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10" style="font-size: 18px;">
                 Reduza custos operacionais, elimine tarefas repetitivas e transforme dados em decisões estratégicas por
-                meio
-                de automação inteligente.
+                meio de automação inteligente.
             </p>
 
             <div class="flex flex-col md:flex-row gap-4 justify-center">
@@ -1003,10 +1014,10 @@
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" loading="lazy" width="400">
 
                     <div>
-                        <h3 class="text-2xl mb-4">Escritórios Contábeis</h3>
+                        <h3 class="text-2xl mb-4"><br>Escritórios Contábeis</h3>
                         <p>
                             Automação de importação de notas fiscais, geração de relatórios, criação<br>
-                            e edição de documentos, conciliações e integrações entre diferentes<br> sistemas contábeis.
+                            e edição de documentos, conciliações e integrações entre diferentes sistemas contábeis.
                         </p>
                     </div>
 
@@ -1018,9 +1029,9 @@
                     <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" loading="lazy" width="400">
 
                     <div>
-                        <h3 class="text-2xl mb-4">Comércio e Varejo</h3>
+                        <h3 class="text-2xl mb-4"><br>Comércio e Varejo</h3>
                         <p>
-                            Robôs que geram relatórios de vendas automaticamente, controle de estoque,<br>
+                            Robôs que geram relatórios de vendas automaticamente, controle de estoque,
                             contato ao cliente e integram plataformas de e-commerce com ERPs.
                         </p>
                     </div>
@@ -1032,7 +1043,7 @@
                     <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" loading="lazy" width="400">
 
                     <div>
-                        <h3 class="text-2xl mb-4">Indústria</h3>
+                        <h3 class="text-2xl mb-4"><br>Indústria</h3>
                         <p>
                             Automação de controle de produção, atualização de planilhas de pedidos,
                             integração de sistemas e geração automática de indicadores operacionais.
@@ -1046,9 +1057,9 @@
                     <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef" loading="lazy" width="400">
 
                     <div>
-                        <h3 class="text-2xl mb-4">Clínicas e Consultórios</h3>
+                        <h3 class="text-2xl mb-4"><br>Clínicas e Consultórios</h3>
                         <p>
-                            Automação de confirmação de consultas, organização de agendas, envio<br>
+                            Automação de confirmação de consultas, organização de agendas, envio
                             automático de mensagens e geração de relatórios administrativos.
                         </p>
                     </div>
@@ -1060,7 +1071,7 @@
                     <img src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d" loading="lazy" width="400">
 
                     <div>
-                        <h3 class="text-2xl mb-4">Instituições Financeiras</h3>
+                        <h3 class="text-2xl mb-4"><br>Instituições Financeiras</h3>
                         <p>
                             Automação de análise de dados, geração de indicadores, insights para<br>
                             tomadas de decisões e execução de tarefas operacionais repetitivas.
@@ -1074,7 +1085,7 @@
                     <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa" loading="lazy" width="400">
 
                     <div>
-                        <h3 class="text-2xl mb-4">Imobiliárias</h3>
+                        <h3 class="text-2xl mb-4"><br>Imobiliárias</h3>
                         <p>
                             Automação de envio de propostas, atualização de anúncios em portais,
                             organização de leads de clientes e geração automática de relatórios e documentos.
@@ -1775,14 +1786,6 @@ Conversar sobre esse processo
             if (e.target === modal) {
                 closeVideo()
             }
-
-        }
-
-        if (window.innerWidth < 768) {
-
-            document.querySelectorAll(".video-thumb video").forEach(v => {
-                v.setAttribute("poster", "play.png")
-            })
 
         }
 
