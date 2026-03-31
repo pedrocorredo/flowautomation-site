@@ -212,20 +212,17 @@
             justify-content: center;
             margin-top: -35px;
             margin-bottom: 40px;
+            padding: 0 10px;
         }
 
         .subnav {
             position: relative;
             display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            max-width: 100%;
-            padding: 10px 15px;
-            /*gap: 10px;*/
+            gap: 10px;
             background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(10px);
             padding: 10px;
-            border-radius: 30px;
+            border-radius: 40px;
         }
 
         .subnav::-webkit-scrollbar {
@@ -357,12 +354,6 @@
             font-weight: bold;
             z-index: 999;
             display: none;
-        }
-
-        @media(max-width:768px) {
-            .whatsapp-float {
-                display: block;
-            }
         }
 
         section {
@@ -663,15 +654,17 @@
                 display: none !important;
             }
 
+            .whatsapp-float {
+                display: block;
+            }
+
             #topBtn {
                 display: none !important;
             }
-        }
-
-        @media(max-width:768px) {
 
             .slide {
                 padding: 20px;
+                text-align: justify;
             }
 
             .slide img {
@@ -679,13 +672,63 @@
                 margin: auto;
             }
 
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 120px;
+            }
+
+            #particles {
+                display: none;
+            }
+
         }
 
         @media(max-width:768px) {
 
-            .hero {
-                padding-top: 120px;
-                padding-bottom: 120px;
+            .subnav-wrapper {
+                padding: 0 10px;
+            }
+
+            .subnav {
+                max-width: 420px;
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 8px;
+            }
+
+            .subnav::-webkit-scrollbar {
+                display: none;
+            }
+
+        }
+
+        .video-thumb video {
+            object-fit: cover;
+        }
+
+        @media(min-width:769px) {
+
+            .video-thumb video {
+                filter: brightness(1);
+            }
+
+        }
+
+        @media(max-width:768px) {
+
+            .video-thumb video {
+                filter: brightness(.85);
+            }
+
+        }
+
+        @media(max-width:768px) {
+
+            .play-icon {
+                font-size: 36px;
+                width: 60px;
+                height: 60px;
             }
 
         }
@@ -1283,78 +1326,81 @@
         PARTICLES HERO
         =============================== */
         const canvas = document.getElementById("particles")
-        const ctx = canvas.getContext("2d")
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth
-            canvas.height = document.documentElement.clientHeight
-        }
+        if (window.innerWidth < 768) {
 
-        resizeCanvas()
+            canvas.style.display = "none"
 
-        window.addEventListener("resize", resizeCanvas)
+        } else {
 
-        // window.addEventListener("resize", () => {
-        //     canvas.width = window.innerWidth
-        //     canvas.height = window.innerHeight
-        // })
+            const ctx = canvas.getContext("2d")
 
-        let particles = []
-
-        for (let i = 0; i < 50; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5
-            })
-        }
-
-        function draw() {
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-            particles.forEach(p => {
-
-                p.x += p.vx
-                p.y += p.vy
-
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1
-
-                ctx.beginPath()
-                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
-                ctx.fillStyle = "#06b6d4"
-                ctx.fill()
-
-            })
-
-            for (let a = 0; a < particles.length; a++) {
-                for (let b = a; b < particles.length; b++) {
-
-                    let dx = particles[a].x - particles[b].x
-                    let dy = particles[a].y - particles[b].y
-                    let dist = Math.sqrt(dx * dx + dy * dy)
-
-                    if (dist < 120) {
-
-                        ctx.strokeStyle = "rgba(6,182,212,0.15)"
-                        ctx.lineWidth = 1
-
-                        ctx.beginPath()
-                        ctx.moveTo(particles[a].x, particles[a].y)
-                        ctx.lineTo(particles[b].x, particles[b].y)
-                        ctx.stroke()
-
-                    }
-
-                }
+            function resizeCanvas() {
+                canvas.width = window.innerWidth
+                canvas.height = window.innerHeight
             }
 
-            requestAnimationFrame(draw)
-        }
+            resizeCanvas()
+            window.addEventListener("resize", resizeCanvas)
 
-        draw()
+            let particles = []
+
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                })
+            }
+
+            function draw() {
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+                particles.forEach(p => {
+
+                    p.x += p.vx
+                    p.y += p.vy
+
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+
+                    ctx.beginPath()
+                    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
+                    ctx.fillStyle = "#06b6d4"
+                    ctx.fill()
+
+                })
+
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+
+                        let dx = particles[a].x - particles[b].x
+                        let dy = particles[a].y - particles[b].y
+                        let dist = Math.sqrt(dx * dx + dy * dy)
+
+                        if (dist < 120) {
+
+                            ctx.strokeStyle = "rgba(6,182,212,0.15)"
+                            ctx.lineWidth = 1
+
+                            ctx.beginPath()
+                            ctx.moveTo(particles[a].x, particles[a].y)
+                            ctx.lineTo(particles[b].x, particles[b].y)
+                            ctx.stroke()
+
+                        }
+                    }
+                }
+
+                requestAnimationFrame(draw)
+
+            }
+
+            draw()
+
+        }
 
         let startX = 0
         let endX = 0
@@ -1717,6 +1763,14 @@ Conversar sobre esse processo
             if (e.target === modal) {
                 closeVideo()
             }
+
+        }
+
+        if (window.innerWidth < 768) {
+
+            document.querySelectorAll(".video-thumb video").forEach(v => {
+                v.setAttribute("poster", "play.png")
+            })
 
         }
 
